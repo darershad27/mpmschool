@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%8E%93%3C/text%3E%3C/svg%3E">
 <title>Modern Public Mission School | Midoora, Awantipora</title>
 <meta name="description" content="Modern Public Mission, a JKBOSE school in Midoora, Awantipora. Admissions, academics, faculty, gallery and news.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
@@ -71,9 +70,24 @@ dialog{border:0;border-radius:20px;max-width:min(640px,92vw);padding:20px;backgr
 .top .w{flex-wrap:wrap}.pb{background:#fef3c7;color:#78350f;font-size:13px;text-align:center;padding:6px 40px 6px 12px;position:relative}.pb button{position:absolute;right:6px;top:2px;min-width:32px;min-height:32px;background:none;border:0;font-size:18px;cursor:pointer;color:inherit}
 .fbb{position:fixed;right:14px;bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:25;border-radius:99px;box-shadow:0 10px 24px -6px rgba(0,0,0,.35)}@media(min-width:960px){.fbb{bottom:20px}}
 #fb form{max-width:none;margin-top:10px}
-.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+.rv{opacity:0}.rv.in{opacity:1;animation:up .75s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--i,0)*90ms)}
+.rv.in.rl{animation-name:lf}.rv.in.rr{animation-name:rt}.rv.in.rz{animation-name:zm}
+@keyframes up{from{opacity:0;transform:translateY(32px)}}@keyframes lf{from{opacity:0;transform:translateX(-48px)}}@keyframes rt{from{opacity:0;transform:translateX(48px)}}@keyframes zm{from{opacity:0;transform:scale(.88)}}@keyframes fade{from{opacity:0}}
+@keyframes bg{50%{background-position:0 0,100% 50%}}@keyframes fl{50%{transform:translate(30px,26px) scale(1.12)}}@keyframes flt{0%,100%{transform:rotate(1.5deg) translateY(0)}50%{transform:rotate(1.5deg) translateY(-12px)}}
+@keyframes pu{0%{box-shadow:0 0 0 0 rgba(251,191,36,.55)}100%{box-shadow:0 0 0 14px rgba(251,191,36,0)}}@keyframes gl{0%{box-shadow:0 0 0 0 rgba(255,255,255,.5)}100%{box-shadow:0 0 0 16px rgba(255,255,255,0)}}@keyframes mq{to{transform:translateX(-50%)}}
+#app>*{animation:fade .5s backwards}
+.hero{background-size:auto,200% 200%;animation:bg 16s ease infinite}.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(46px);opacity:.35;animation:fl 10s ease-in-out infinite;pointer-events:none}
+.hero:before{width:280px;height:280px;left:-60px;top:-80px;background:#f59e0b}.hero:after{width:320px;height:320px;right:-80px;bottom:-120px;background:#14b8a6;animation-delay:-5s}.hero .w{z-index:1}
+.hero .pill{animation:up .8s .05s backwards,pu 2.2s 1s infinite}.hero h1{animation:up .8s .15s backwards}.hero p{animation:up .8s .3s backwards}.hero .row{animation:up .8s .45s backwards}.hero .chips{animation:up .8s .6s backwards}
+.hero .btn:not(.o){animation:gl 2.6s 1.2s infinite}.art{animation:flt 7s ease-in-out infinite}
+.eyebrow:after{content:"";display:block;width:0;height:3px;margin-top:6px;border-radius:3px;background:linear-gradient(90deg,var(--s2),var(--t));transition:width .9s .3s}.eyebrow.in:after{width:56px}
+.ic{transition:transform .3s}.card:hover .ic{transform:rotate(-8deg) scale(1.14)}
+.tk{background:#b45309;color:#fff;overflow:hidden;white-space:nowrap;font-weight:600;font-size:14px}.tk div{display:inline-block;padding:10px 0;animation:mq 34s linear infinite}.tk:hover div{animation-play-state:paused}.tk span{margin:0 30px}
+#sp{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#f59e0b,#0d9488);z-index:60}header.hs{box-shadow:0 10px 28px -14px rgba(15,42,102,.4)}
+
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1}.tk{white-space:normal}.tk div{padding:10px 12px}}
 </style></head><body>
+<div id="sp" aria-hidden="true"></div>
 <a class="sk" href="#app">Skip to main content</a>
 <div class="pb" id="pb">Prototype for review. All content is demo; please share your feedback.<button type="button" id="pbx" aria-label="Dismiss banner">×</button></div>
 <div class="top"><div class="w"><span>📍 Midoora, Awantipora, J&amp;K · JKBOSE</span><span><a href="#/portal">🔐 Parent Login</a> · <a href="#/office">🏢 Office Login</a> · <a id="tp" href="#">Call</a></span></div></div>
@@ -208,6 +222,7 @@ function officeInit(){const f=$("#of");
 const pages={
 portal:()=>user?dashView():loginView(),office:()=>office?officeView():officeLogin(),
 "":()=>`<section class="hero big"><div class="w"><div><span class="pill">Admissions open for ${C.year}</span><h1>A Caring Place to <em>Learn, Grow</em> and Thrive.</h1><p>In Midoora, Awantipora, Modern Public Mission offers JKBOSE education with caring teachers, open communication with parents, and a safe, supportive campus.</p><div class="row"><a class="btn" href="#/admissions">Apply for Admission</a><a class="btn o" href="#/visit">Book a Campus Visit</a></div><div class="chips"><span>✓ JKBOSE curriculum</span><span>✓ Caring teachers</span><span>✓ Safe campus</span></div></div><div class="art">${scene("campus",0)}</div></div></section>
+<div class="tk" aria-label="Announcements"><div>${[1,2].map(()=>`<span>🎓 Admissions open for ${C.year}</span><span>📅 Campus visits by appointment</span><span>📱 Parent Portal with live updates</span><span>🏫 JKBOSE curriculum, Nursery to Class 10</span>`).join("")}</div></div>
 <section class="stats"><div class="w"><div class="g3">${C.stats.map(s=>`<div><div class="n" data-n="${s[0]}" data-s="${s[1]}">${s[0]}${s[1]}</div><div>${s[2]}</div></div>`).join("")}</div></div></section>
 <section class="b"><div class="w"><div class="eyebrow">Our foundations</div><h2>Six values behind every school day</h2>${simple(vals)}</div></section>
 <section class="b alt"><div class="w rv"><div class="pr"><div class="ph">${avatar(0)}</div><div><div class="eyebrow">Principal's welcome</div><blockquote>“We nurture character alongside curriculum.”</blockquote><p class="lead">${C.principal.msg}</p><p><strong>${C.principal.name}</strong>, Principal · <a href="#/about">Read more about us</a></p></div></div></div></section>
@@ -228,7 +243,10 @@ contact:()=>hero("Contact Us","We are happy to answer your questions.","Contact"
 <form id="af" novalidate class="card c2">${field("pn","Your name")}${field("pp","Phone number","tel",1,'inputmode="tel"')}<div><label for="ms">Message <span aria-hidden="true">*</span></label><textarea id="ms" rows="4" required aria-describedby="mse"></textarea><p class="er" id="mse" role="alert"></p></div><button class="btn" type="submit" id="sb">Send message</button><div id="res" role="status" aria-live="polite"></div></form></div></section>`,
 privacy:()=>hero("Privacy Policy","How we handle your information.","Privacy")+`<section class="b"><div class="w"><p class="lead">Draft outline. The school's administrator or legal adviser must approve the final policy.</p>${["Information we collect","How we use it","Cookies and analytics","Data retention and security","Third-party services","Your rights","Contact us"].map(t=>`<h3>${t}</h3><p class="lead">[To be completed]</p>`).join("")}</div></section>`};
 function nvr(){const h=location.hash.slice(2)||"";const a=nav.map(n=>`<a href="#/${n[1]}" ${h==n[1]?'aria-current="page"':''}>${n[0]}</a>`).join("");$("#nv").innerHTML=a;$("#mn").innerHTML=a+'<a href="#/portal">Parent Login</a><a href="#/office">Office Login</a><a class="btn" href="#/admissions">Apply for Admission</a><a class="btn o" href="#/visit">Book a Campus Visit</a>'}
-function fx(){const io=new IntersectionObserver(es=>es.forEach(x=>{if(!x.isIntersecting)return;x.target.classList.add("in");io.unobserve(x.target)}),{threshold:.12});document.querySelectorAll(".rv").forEach(r=>io.observe(r));
+function fx(){const A=(q,c)=>document.querySelectorAll(q).forEach(e=>e.classList.add("rv",...(c?[c]:[])));
+ A(".b>.w>h2");A(".b>.w>.eyebrow");A(".b>.w>.lead");A(".g3>.card");A(".pr>.ph","rl");A(".pr>div:last-child","rr");A(".stats .g3>div","rz");A(".gal button","rz");A(".steps li");A("details");A(".art","rz");
+ document.querySelectorAll(".g3,.steps,.gal,.cams").forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty("--i",Math.min(i,6))));
+ const io=new IntersectionObserver(es=>es.forEach(x=>{if(!x.isIntersecting)return;x.target.classList.add("in");io.unobserve(x.target)}),{threshold:.12});document.querySelectorAll(".rv").forEach(r=>io.observe(r));
  const rm=matchMedia("(prefers-reduced-motion:reduce)").matches;document.querySelectorAll("[data-n]").forEach(el=>{if(rm)return;const T=+el.dataset.n,S=el.dataset.s;const io2=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;io2.disconnect();const t0=performance.now();(function st(t){const k=Math.min(1,(t-t0)/1400);el.textContent=Math.round(T*(1-Math.pow(1-k,3))).toLocaleString()+(k==1?S:"");if(k<1)requestAnimationFrame(st)})(t0)});io2.observe(el)})}
 function route(first){clearInterval(tick);const h=location.hash.slice(2)||"";$("#app").innerHTML=(pages[h]||pages[""])();nvr();$("#mn").classList.remove("open");$("#mt").setAttribute("aria-expanded","false");
  document.title=(h?h[0].toUpperCase()+h.slice(1)+" | ":"")+"Modern Public Mission, Awantipora";if(!first){scrollTo(0,0);$("#app").focus({preventScroll:true})}
@@ -246,6 +264,7 @@ async function submit(ev){ev.preventDefault();const f=ev.target;let bad=null;
  if(C.formEndpoint){try{const d=Object.fromEntries(new FormData(f));d.reference=ref;const r=await fetch(C.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)});ok=r.ok}catch(x){ok=false}}
  if(!ok){b.disabled=false;b.textContent="Try again";$("#res").innerHTML='<p class="er">Sorry, we could not send this. Please check your connection and try again, or WhatsApp us.</p>';return}
  const dd={};f.querySelectorAll("input,select,textarea").forEach(x=>dd[x.id]=x.type=="checkbox"?x.checked:x.value);SUBS.unshift({ref,type:location.hash.includes("visit")?"Campus visit":location.hash.includes("admissions")?"Application":"Contact",date:new Date().toLocaleString("en-IN"),data:dd});save();const v=location.hash.includes("visit");$("#res").innerHTML=`<div class="ok"><strong>Thank you.</strong> ${v?"Your visit request has been received. The school will contact you to confirm the date and time.":"Your submission has been received. The school team will contact you using the details provided."}<br>Reference: <strong>${ref}</strong>${C.formEndpoint?"":'<br><em>(Demo mode: connect a form endpoint to receive submissions.)</em>'}</div>`;b.textContent="Submitted"}
+addEventListener("scroll",()=>{const d=document.documentElement,m=d.scrollHeight-innerHeight;$("#sp").style.width=(m>0?scrollY/m*100:0)+"%";document.querySelector("header").classList.toggle("hs",scrollY>8)},{passive:true});
 $("#mt").onclick=()=>{const o=$("#mn").classList.toggle("open");$("#mt").setAttribute("aria-expanded",o);$("#mt").setAttribute("aria-label",o?"Close menu":"Open menu")};
 $("#lbx").onclick=()=>$("#lb").close();$("#lb").onclose=()=>{const r=$("#lb").returnTo;if(r)r.focus()};
 function hdr(){["#fp","#tp"].forEach(s=>{$(s).href="tel:"+C.phone;$(s).textContent=s=="#tp"?"Call us":C.phone});$("#fw").href="https://wa.me/"+C.wa;$("#fe").textContent=C.email}hdr();$("#yr").textContent=new Date().getFullYear();
